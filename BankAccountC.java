@@ -1,5 +1,5 @@
 
-public class BankAccountB {
+public class BankAccountC {
 	private String password; // for AP, these instance variables must be private
 	private double balance;
 	private static double interestRate = 0.03;
@@ -7,13 +7,13 @@ public class BankAccountB {
 	
 	//constructors
 	/** Default constructor. */
-	public BankAccountB() {
+	public BankAccountC() {
 		this.password = "password";
 		this.balance = 0;
 	}
 
 	/** Constructs bank account with specified password and balance. */
-	public BankAccountB(String acctPassword, double acctBalance) {
+	public BankAccountC(String acctPassword, double acctBalance) {
 		this.password = acctPassword;
 		this.balance = acctBalance;
 		System.out.println("New account created with balance $" + this.balance);
@@ -68,5 +68,16 @@ public class BankAccountB {
 		if (this.balance < 0) {
 			System.out.println("You must deposit money into your account, your balance is negative!");
 		}
+	}
+	
+	@Override
+	public String toString() {
+		return "This bank account has a balance of $" + this.balance + " and an interest rate of " + interestRate * 100 + "%.";
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		// ClassCastException if other is not a BankAccountC
+		return ((BankAccountC) other).getBalance() == this.balance;
 	}
 }
